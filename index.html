@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loveyou</title>
+    <style>
+        /* 이서윤체 폰트 적용을 위한 코드 */
+      @font-face {
+        font-family: "LeeSeoyun";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      h1{
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        top: 20px;
+      }
+
+      /* body태그 자체에 css 요소 부여 */
+body {
+    padding: 100px;
+	font-family: "LeeSeoyun";
+	margin: 0;
+	display: flex;
+    justify-content:center;
+	background-image: url("./background.png");
+}
+    .container{
+        width: 390px;
+        background-color: #ff9d73;
+        height: 100%;
+    }
+    .photos{
+        margin-top: 35px;
+    }
+    .photo-frame{
+        margin: 15px 20px;
+        height: 250px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .footer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: auto;
+    }
+
+    .f-title{
+        color: white;
+        font-size: 25px;
+        font-weight: 900;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .f-date{
+        font-size: 15px;
+        font-weight: 500;
+        color: white;
+        margin-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    #image1 {
+        background-image: url('./img1.jpg');
+    }
+    #image2 {
+        background-image: url('./img2.JPG');
+    }
+    #image3 {
+        background-image: url('./img3.jpg');
+    }
+    #image4 {
+        background-image: url('./img4.jpeg');
+    }
+
+    .photo_description{
+        color: white;
+        background-color: rgba(0,0,0,0.5);
+        /* rgba 4th element is opacity */
+
+        width: fit-content;
+        padding: 0 20px;
+        margin-bottom: 10px;
+
+        border-radius:  10px;
+        position: absolute;
+        bottom: 0;
+
+        transform:  translate(-50%);
+        left: 50%;
+        opacity: 0;
+    }
+
+    /* opacity 0 means fully transparent and 1 for opaque(불투명함) */
+    /* transition combines 4 of the transition properties into a single property */
+    .showText {
+        opacity: 1;
+        transition: opacity 0.5s linear;
+    }
+
+    .hideText {
+        opacity: 0;
+    }
+
+    </style>
+    <script>
+        // 텍스트가 보여지는 기능
+        // 1. 몇 번째 사진에 마우스가 올라갔는지 확인(if문)
+        // 2. 해당 사진을 찾아 hideText class를 지워주고, showText는 삽입해줌
+        function showText(number) {
+            if (number === 1) {
+                document.querySelector("#desc1").classList.remove("hideText");
+                document.querySelector("#desc1").classList.add("showText");
+            } else if (number === 2) {
+                document.querySelector("#desc2").classList.remove("hideText");
+                document.querySelector("#desc2").classList.add("showText");
+            } else if (number === 3) {
+                document.querySelector("#desc3").classList.remove("hideText");
+                document.querySelector("#desc3").classList.add("showText");
+            } else {
+                document.querySelector("#desc4").classList.remove("hideText");
+                document.querySelector("#desc4").classList.add("showText");
+            }
+        }
+
+        // 텍스트가 감춰지는 기능
+        // 1. 몇 번째 사진에서 마우스가 벗어났는지 확인(if문)
+        // 2. 해당 사진을 찾아 shotText class를 지워주고, hideText는 삽입해줌
+        function hideText(number) {
+            if (number === 1) {
+                document.querySelector("#desc1").classList.remove("showText");
+                document.querySelector("#desc1").classList.add("hideText");
+            } else if (number === 2) {
+                document.querySelector("#desc2").classList.remove("showText");
+                document.querySelector("#desc2").classList.add("hideText");
+            } else if (number === 3) {
+                document.querySelector("#desc3").classList.remove("showText");
+                document.querySelector("#desc3").classList.add("hideText");
+            } else {
+                document.querySelector("#desc4").classList.remove("showText");
+                document.querySelector("#desc4").classList.add("hideText");
+            }
+        }
+
+        // 클릭 기능
+        // 1. 선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
+        function alertText(number) {
+            if (number === 4) {
+                alert(`${number}번째 행복 조각이에요 :)
+                \n항상 나와 함께 해줘서 고마워요\n우리 앞으로도 이런 행복의 조각들을 마구마구 모아가요 사랑해요🤍
+                \n내 꿈이 되어준 그대를 은애합니다.`);
+            } else {
+            alert(`${number}번째 행복 조각이에요 :)`);
+            }
+        }
+
+        
+;
+
+    </script>
+</head>
+<body>
+    <h1> Happy Valentine Day </h1>
+    <div class="container">
+        <div class="photos">
+            <div id = "image1" 
+            class="photo-frame"
+            onmouseover="showText(1)"
+            onmouseout="hideText(1)"
+            onclick="alertText(1)"> 
+                <span id ="desc1" class="photo_description">
+                    우리 첫 스튜디오 사진 촬영 🤍
+                </span>
+            </div>
+            <div id = "image2" class="photo-frame"
+            onmouseover="showText(2)"
+            onmouseout="hideText(2)"
+            onclick="alertText(2)">
+                <span id ="desc2" class="photo_description">
+                    우리의 파란만장 100일 기념 스냅 촬영 🤍
+            </div>
+            <div id = "image3" class="photo-frame"
+            onmouseover="showText(3)"
+            onmouseout="hideText(3)"
+            onclick="alertText(3)"> 
+                <span id ="desc3" class="photo_description">
+                    시험을 앞두고 피곤함과 한판했던 우리의 200일 🤍
+            </div>
+            <div class="photo-frame"
+            onmouseover="showText(4)"
+            onmouseout="hideText(4)"
+            onclick="alertText(4)"> 
+                <video width="100%" height="100%" controls>
+                    <source src="img4.mp4" type="video/mp4">
+                </video>
+                <span id ="desc4" class="photo_description">
+                    발렌타인 초콜릿 보다 더 달달했던 우리의 300일 🤍
+            </div>
+        </div>
+        <div class="footer">
+            <p class="f-title">Love Our Memorable Time</p>
+            <p class="f-date"> 2023.02.14</p>
+        </div> 
+    </div>
+</body>
+</html>
